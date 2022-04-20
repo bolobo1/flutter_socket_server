@@ -7,9 +7,7 @@ io.on('connection', client => {
 
     console.log('Cliente conectado');
 
-    client.on('disconnect', () => {
-        console.log('Cliente desconectado');
-    });
+
 
     //on es para ecuchar o recibir valores
     //emitir para emitir o enviar valores
@@ -17,7 +15,12 @@ io.on('connection', client => {
     client.on('mensaje', (payload) =>{
         console.log(payload);
 
-        io.emit('mensaje',{admin: 'Nuevo mensaje'});
+        io.emit('mensaje',{admin: 'Bienvenido al Server'});
     });
+
+    client.on('disconnect', () => {
+        console.log('Cliente desconectado');
+    });
+
 
 });
